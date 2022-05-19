@@ -1,11 +1,12 @@
 # This is a generated file; do not edit or check into version control.
-firebase_core=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.16.0/
-firebase_core_web=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.3/
-firebase_storage=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.2.15/
-firebase_storage_web=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.2.14/
+firebase_core=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.17.0/
+firebase_core_web=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.4/
+firebase_storage=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.2.16/
+firebase_storage_web=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.2.15/
 path_provider=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.10/
 path_provider_android=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.14/
 path_provider_ios=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_ios-2.0.9/
 path_provider_linux=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.6/
 path_provider_macos=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.6/
 path_provider_windows=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.6/
+sqflite=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-2.0.2+1/

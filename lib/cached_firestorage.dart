@@ -1,5 +1,3 @@
-library cached_firestorage;
-
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -69,15 +67,19 @@ class CachedFirestorage {
   }
 
   void removeCacheEntry({
-    required String storageKey,
     required String mapKey,
+    String? storageKey,
   }) {
     final Map<String, dynamic> mapDownloadURLs =
-        GetStorage().read(storageKey) ?? {};
+        GetStorage().read(_storageKeys[storageKey ?? 'default']!) ?? {};
 
     if (mapDownloadURLs[mapKey] != null) {
       mapDownloadURLs.remove(mapKey);
-      GetStorage().write(storageKey, mapDownloadURLs);
+      GetStorage()
+          .write(_storageKeys[storageKey ?? 'default']!, mapDownloadURLs);
     }
   }
+
+  Map<String, dynamic> getMapDownloadURLs({String? storageKey}) =>
+      GetStorage().read(_storageKeys[storageKey ?? 'default']!) ?? {};
 }

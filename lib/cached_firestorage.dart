@@ -22,14 +22,18 @@ class CachedFirestorage {
   }) async {
     try {
       return await FirebaseStorage.instance.ref(filePath).getDownloadURL();
-    } catch (e) {
-      if (fallbackFilePath != null) {
+    } catch (_) {
+      if (fallbackFilePath == null) {
+        return '';
+      }
+
+      try {
         return await FirebaseStorage.instance
             .ref(fallbackFilePath)
             .getDownloadURL();
+      } catch (__) {
+        return '';
       }
-
-      return '';
     }
   }
 

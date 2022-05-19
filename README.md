@@ -27,7 +27,7 @@ and caches the result, so every time you will ask for it again, you'll have dire
  * `String mapKey`: The key at which your cached entry will be stored
  * `String filePath`: The file path on your Firebase Storage bucket
  * `String? storageKey`: You can split the cache into sub-paths: this is the subpath key
- * `String? fallbackFilePath`: If provided, this is the path that will be returned in case of no matches on Firebase Storage
+ * `String? fallbackFilePath`: If provided, this is the path that at which CachedFirestorage will try to point in case of no matches on the first attempt Firebase Storage. If also the second attempt goes bad, Cached Firestorage will return an empty string;
 
 ### removeCacheEntry
 

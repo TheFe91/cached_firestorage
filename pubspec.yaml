@@ -1,5 +1,5 @@
 name: cached_firestorage
-description: A new Flutter package project.
+description: A Flutter utility that manages Firebase Storage download URLs and caches the results
 version: 0.1.0
 homepage: https://github.com/TheFe91/cached_firestorage.git
 
@@ -20,6 +20,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.1
+
+false_secrets:
+  - example/lib/firebase_options.dart
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

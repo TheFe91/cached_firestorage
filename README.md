@@ -4,7 +4,7 @@
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![style: flutter_lints dart](https://img.shields.io/badge/style-flutter_lints-40c4ff.svg)](https://pub.dev/packages/flutter_lints)
 [![Github](https://img.shields.io/github/stars/TheFe91/cached_firestorage?style=social)](https://github.com/TheFe91/cached_firestorage)
-[![Codemagic build status](https://api.codemagic.io/apps/628782eec7038f00137645b3/628782eec7038f00137645b2/status_badge.svg)](https://codemagic.io/apps/628782eec7038f00137645b3/628782eec7038f00137645b2/latest_build)
+[![Codemagic build status](https://api.codemagic.io/apps/628782eec7038f00137645b3/default-workflow/status_badge.svg)](https://codemagic.io/apps/628782eec7038f00137645b3/628782eec7038f00137645b2/latest_build)
 
 A Flutter utility that manages Firebase Storage download URLs and caches the results
 

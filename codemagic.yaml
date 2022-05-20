@@ -19,7 +19,7 @@ workflows:
           include: true
     scripts:
       - flutter pub get
-      - echo $CREDENTIALS | base64 --decode > "$FLUTTER_ROOT/.pub-cache/credentials.json" && flutter pub publish -f
+      - echo $Credentials | base64 --decode > "$FLUTTER_ROOT/.pub-cache/credentials.json" && flutter pub publish -f
     artifacts:
       - '*.snap'
       - flutter_drive.log

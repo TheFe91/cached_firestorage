@@ -4,12 +4,13 @@
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![style: flutter_lints dart](https://img.shields.io/badge/style-flutter_lints-40c4ff.svg)](https://pub.dev/packages/flutter_lints)
 [![Github](https://img.shields.io/github/stars/TheFe91/cached_firestorage?style=social)](https://github.com/TheFe91/cached_firestorage)
+[![Codemagic build status](https://api.codemagic.io/apps/628782eec7038f00137645b3/628782eec7038f00137645b2/status_badge.svg)](https://codemagic.io/apps/628782eec7038f00137645b3/628782eec7038f00137645b2/latest_build)
 
 A Flutter utility that manages Firebase Storage download URLs and caches the results
 
 ## Usage
 
-Cached Firestorage exposes a `Singleton` that you can access via `CachedFirestorage.instance`<br /><br />
+Cached Firestorage exposes a `Singleton` which you can access through `CachedFirestorage.instance`<br /><br />
 The default `cache duration` is of `360s` (`6h`): you can customize this by passing the number of seconds to the instance:
 ```dart
 CachedFirestorage.instance.cacheTimeout = 30;
@@ -19,15 +20,15 @@ CachedFirestorage.instance.cacheTimeout = 30;
 
 ### getDownloadURL
 
-This is the main api: it's a `Future<String>` that resolves returning in its `snapshot.data` the Firebase Storage's download url of the requested resource,
-and caches the result, so every time you will ask for it again, you'll have direct access to the resource's url.<br />
+This is the main api: it's a `Future<String>`. When it completes, it returns in its `snapshot.data` the Firebase Storage's download url of the requested resource,
+caching the result. Every time you will ask for it again, you'll have direct access to the resource's url.<br />
 `getDownloadURL`  <strong>always</strong> returns a `String`, meaning that if no file is matched and no `fallbackFilePath` (see below) is provided, it will return `''`;
 
 #### Parameters (all named)
  * `String mapKey`: The key at which your cached entry will be stored
  * `String filePath`: The file path on your Firebase Storage bucket
  * `String? storageKey`: You can split the cache into sub-paths: this is the subpath key
- * `String? fallbackFilePath`: If provided, this is the path that at which CachedFirestorage will try to point in case of no matches on the first attempt Firebase Storage. If also the second attempt goes bad, Cached Firestorage will return an empty string;
+ * `String? fallbackFilePath`: If provided, this is the path at which Cached Firestorage will try to point in case of no matches on the first attempt on Firebase Storage. If the second attempt goes bad too, Cached Firestorage will return an empty string;
 
 ### removeCacheEntry
 

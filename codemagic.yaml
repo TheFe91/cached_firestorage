@@ -1,0 +1,29 @@
+workflows:
+  default-workflow:
+    name: Publish on pub
+    max_build_duration: 60
+    environment:
+      flutter: default
+      xcode: latest
+      cocoapods: default
+      groups:
+        - Credentials
+    cache:
+      cache_paths:
+        - $FLUTTER_ROOT/.pub-cache
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: master
+          include: true
+    scripts:
+      - flutter pub get
+      - echo $CREDENTIALS | base64 --decode > "$FLUTTER_ROOT/.pub-cache/credentials.json" && flutter pub publish --dry-run
+    artifacts:
+      - '*.snap'
+      - flutter_drive.log
+    publishing:
+      email:
+        recipients:
+          - alessandrodefendenti@gmail.com

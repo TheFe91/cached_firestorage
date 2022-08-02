@@ -7,7 +7,7 @@ import 'package:get_storage/get_storage.dart';
 ///
 class CachedFirestorage {
   static CachedFirestorage? _instance;
-  final Map<String, String> _storageKeys = {'default': 'default'};
+  Map<String, String> _storageKeys = {'default': 'default'};
   int cacheTimeout;
 
   CachedFirestorage._(this.cacheTimeout);
@@ -15,6 +15,12 @@ class CachedFirestorage {
   /// Get the singleton instance
   static CachedFirestorage get instance =>
       _instance ??= CachedFirestorage._(360);
+
+  /// Sets the storage keys
+  void setStorageKeys(Map<String, String> keys) {
+    assert(!keys.keys.contains('default'), 'The default key is automatically set');
+    _storageKeys = {..._storageKeys, ...keys};
+  }
 
   /// Private method
   Future<String> _getDownloadURL(String filePath, {

@@ -1,3 +1,6 @@
+## 0.1.5
+* Updated dependencies
+
 ## 0.1.4
 * [BUGFIX] Added a method to setup your personal storage keys
 

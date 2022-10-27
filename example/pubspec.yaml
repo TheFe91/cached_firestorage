@@ -13,8 +13,8 @@ dependencies:
     sdk: flutter
   cached_firestorage:
     path: ../
-  cupertino_icons: ^1.0.4
-  firebase_core: ^1.17.0
+  cupertino_icons: ^1.0.5
+  firebase_core: ^2.1.0
 
 dev_dependencies:
   flutter_test:

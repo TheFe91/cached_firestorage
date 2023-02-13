@@ -37,29 +37,30 @@ class RemotePicture extends StatelessWidget {
       ),
       builder: (_, snapshot) => snapshot.connectionState ==
               ConnectionState.waiting
-          ? Center(
-              child: !kIsWeb
-                  ? AdaptiveSpinner()
-                  : const CircularProgressIndicator())
+          ? const Center(
+              child: !kIsWeb ? AdaptiveSpinner() : CircularProgressIndicator(),
+            )
           : useAvatarView
               ? AvatarView(
                   radius: avatarViewRadius!,
                   avatarType: AvatarType.CIRCLE,
                   imagePath:
                       snapshot.data != "" ? snapshot.data! : placeholder!,
-                  placeHolder: Center(
-                      child: !kIsWeb
-                          ? AdaptiveSpinner()
-                          : const CircularProgressIndicator()),
+                  placeHolder: const Center(
+                    child: !kIsWeb
+                        ? AdaptiveSpinner()
+                        : CircularProgressIndicator(),
+                  ),
                   errorWidget:
                       placeholder != null ? Image.asset(placeholder!) : null,
                 )
               : CachedNetworkImage(
                   imageUrl: snapshot.data!,
-                  placeholder: (_, __) => Center(
-                      child: !kIsWeb
-                          ? AdaptiveSpinner()
-                          : const CircularProgressIndicator()),
+                  placeholder: (_, __) => const Center(
+                    child: !kIsWeb
+                        ? AdaptiveSpinner()
+                        : CircularProgressIndicator(),
+                  ),
                   errorWidget: placeholder != null
                       ? (_, __, ___) => Image.asset(placeholder!)
                       : null,

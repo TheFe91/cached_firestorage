@@ -18,12 +18,14 @@ class CachedFirestorage {
 
   /// Sets the storage keys
   void setStorageKeys(Map<String, String> keys) {
-    assert(!keys.keys.contains('default'), 'The default key is automatically set');
+    assert(
+        !keys.keys.contains('default'), 'The default key is automatically set');
     _storageKeys = {..._storageKeys, ...keys};
   }
 
   /// Private method
-  Future<String> _getDownloadURL(String filePath, {
+  Future<String> _getDownloadURL(
+    String filePath, {
     String? fallbackFilePath,
   }) async {
     try {
@@ -58,10 +60,8 @@ class CachedFirestorage {
 
     if (mapDownloadURLs[mapKey] != null) {
       final DateTime lastWrite =
-      DateTime.parse(mapDownloadURLs[mapKey]['lastWrite']);
-      final int difference = now
-          .difference(lastWrite)
-          .inMinutes;
+          DateTime.parse(mapDownloadURLs[mapKey]['lastWrite']);
+      final int difference = now.difference(lastWrite).inMinutes;
       if (difference < cacheTimeout) {
         return mapDownloadURLs[mapKey]['value'];
       }

@@ -35,7 +35,8 @@ class RemotePicture extends StatelessWidget {
         storageKey: storageKey,
         mapKey: mapKey,
       ),
-      builder: (_, snapshot) => snapshot.connectionState == ConnectionState.waiting
+      builder: (_, snapshot) => snapshot.connectionState ==
+              ConnectionState.waiting
           ? const Center(
               child: !kIsWeb ? AdaptiveSpinner() : CircularProgressIndicator(),
             )
@@ -43,19 +44,26 @@ class RemotePicture extends StatelessWidget {
               ? AvatarView(
                   radius: avatarViewRadius!,
                   avatarType: AvatarType.circle,
-                  imagePath: snapshot.data != "" ? snapshot.data! : placeholder!,
+                  imagePath:
+                      snapshot.data != "" ? snapshot.data! : placeholder!,
                   placeHolder: const Center(
-                    child: !kIsWeb ? AdaptiveSpinner() : CircularProgressIndicator(),
+                    child: !kIsWeb
+                        ? AdaptiveSpinner()
+                        : CircularProgressIndicator(),
                   ),
-                  errorWidget: placeholder != null ? Image.asset(placeholder!) : null,
+                  errorWidget:
+                      placeholder != null ? Image.asset(placeholder!) : null,
                 )
               : CachedNetworkImage(
                   imageUrl: snapshot.data!,
                   placeholder: (_, __) => const Center(
-                    child: !kIsWeb ? AdaptiveSpinner() : CircularProgressIndicator(),
+                    child: !kIsWeb
+                        ? AdaptiveSpinner()
+                        : CircularProgressIndicator(),
                   ),
-                  errorWidget:
-                      placeholder != null ? (_, __, ___) => Image.asset(placeholder!) : null,
+                  errorWidget: placeholder != null
+                      ? (_, __, ___) => Image.asset(placeholder!)
+                      : null,
                   fit: fit,
                 ),
     );

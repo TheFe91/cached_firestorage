@@ -4,7 +4,6 @@
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![style: flutter_lints dart](https://img.shields.io/badge/style-flutter_lints-40c4ff.svg)](https://pub.dev/packages/flutter_lints)
 [![Github](https://img.shields.io/github/stars/TheFe91/cached_firestorage?style=social)](https://github.com/TheFe91/cached_firestorage)
-[![Codemagic build status](https://api.codemagic.io/apps/628782eec7038f00137645b3/default-workflow/status_badge.svg)](https://codemagic.io/apps/628782eec7038f00137645b3/628782eec7038f00137645b2/latest_build)
 
 A Flutter utility that manages Firebase Storage download URLs and caches the results
 
@@ -14,6 +13,11 @@ Cached Firestorage exposes a `Singleton` which you can access through `CachedFir
 The default `cache duration` is of `360s` (`6h`): you can customize this by passing the number of seconds to the instance:
 ```dart
 CachedFirestorage.instance.cacheTimeout = 30;
+```
+
+You can, for code organization purposes, split the cache into subpaths. Those subpaths must be created at the beginning, by invoking
+```dart
+CachedFirestorage.instance.setStorageKeys({'cachePathName': 'cachePathValue'});
 ```
 
 ## APIs

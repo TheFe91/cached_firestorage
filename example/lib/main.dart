@@ -62,15 +62,14 @@ class _HomePageState extends State<HomePage> {
                 mapKey: '1',
                 filePath: '1.jpeg',
               ),
-              builder: (_, snapshot) =>
-                  snapshot.connectionState == ConnectionState.waiting
-                      ? const CircularProgressIndicator.adaptive()
-                      : snapshot.hasError
-                          ? const Text('An error occurred')
-                          : Image.network(
-                              snapshot.data!,
-                              height: 100,
-                            ),
+              builder: (_, snapshot) => snapshot.connectionState == ConnectionState.waiting
+                  ? const CircularProgressIndicator.adaptive()
+                  : snapshot.hasError
+                      ? const Text('An error occurred')
+                      : Image.network(
+                          snapshot.data!,
+                          height: 100,
+                        ),
             ),
             const Divider(height: 50),
             const Text(
@@ -83,15 +82,14 @@ class _HomePageState extends State<HomePage> {
                 mapKey: '2',
                 filePath: currentPic,
               ),
-              builder: (_, snapshot) =>
-                  snapshot.connectionState == ConnectionState.waiting
-                      ? const CircularProgressIndicator.adaptive()
-                      : snapshot.hasError
-                          ? const Text('An error occurred')
-                          : Image.network(
-                              snapshot.data!,
-                              height: 100,
-                            ),
+              builder: (_, snapshot) => snapshot.connectionState == ConnectionState.waiting
+                  ? const CircularProgressIndicator.adaptive()
+                  : snapshot.hasError
+                      ? const Text('An error occurred')
+                      : Image.network(
+                          snapshot.data!,
+                          height: 100,
+                        ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -104,8 +102,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   onPressed: () {
                     setState(() {
-                      currentPic =
-                          currentPic == '2-1.jpeg' ? '2-2.jpeg' : '2-1.jpeg';
+                      currentPic = currentPic == '2-1.jpeg' ? '2-2.jpeg' : '2-1.jpeg';
                     });
                   },
                 ),
@@ -118,8 +115,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   onPressed: () {
                     setState(() {
-                      currentPic =
-                          currentPic == '2-1.jpeg' ? '2-2.jpeg' : '2-1.jpeg';
+                      currentPic = currentPic == '2-1.jpeg' ? '2-2.jpeg' : '2-1.jpeg';
                       CachedFirestorage.instance.removeCacheEntry(mapKey: '2');
                     });
                   },
@@ -133,9 +129,9 @@ class _HomePageState extends State<HomePage> {
               'in Firebase Storage',
               textAlign: TextAlign.center,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 SizedBox(
                   height: 100,
                   child: RemotePicture(
@@ -150,15 +146,16 @@ class _HomePageState extends State<HomePage> {
               'You can also use it for an avatar',
               textAlign: TextAlign.center,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 RemotePicture(
                   imagePath: 'avatar.jpeg',
                   mapKey: 'avatar',
                   useAvatarView: true,
                   avatarViewRadius: 60,
                   fit: BoxFit.cover,
+                  storageKey: 'pp',
                 ),
               ],
             ),

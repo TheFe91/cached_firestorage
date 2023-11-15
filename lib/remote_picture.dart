@@ -1,7 +1,7 @@
 import 'package:adaptive_spinner/adaptive_spinner.dart';
-import 'package:avatar_view/avatar_view.dart';
 import 'package:cached_firestorage/cached_firestorage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:enhanced_avatar_view/enhanced_avatar_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -22,8 +22,8 @@ class RemotePicture extends StatelessWidget {
     this.placeholder,
     this.avatarViewRadius,
     this.fit,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,35 +35,27 @@ class RemotePicture extends StatelessWidget {
         storageKey: storageKey,
         mapKey: mapKey,
       ),
-      builder: (_, snapshot) => snapshot.connectionState ==
-              ConnectionState.waiting
+      builder: (_, snapshot) => snapshot.connectionState == ConnectionState.waiting
           ? const Center(
               child: !kIsWeb ? AdaptiveSpinner() : CircularProgressIndicator(),
             )
           : useAvatarView
               ? AvatarView(
                   radius: avatarViewRadius!,
-                  avatarType: AvatarType.CIRCLE,
-                  imagePath:
-                      snapshot.data != "" ? snapshot.data! : placeholder!,
+                  avatarType: AvatarType.circle,
+                  imagePath: snapshot.data != "" ? snapshot.data! : placeholder!,
                   placeHolder: const Center(
-                    child: !kIsWeb
-                        ? AdaptiveSpinner()
-                        : CircularProgressIndicator(),
+                    child: !kIsWeb ? AdaptiveSpinner() : CircularProgressIndicator(),
                   ),
-                  errorWidget:
-                      placeholder != null ? Image.asset(placeholder!) : null,
+                  errorWidget: placeholder != null ? Image.asset(placeholder!) : null,
                 )
               : CachedNetworkImage(
                   imageUrl: snapshot.data!,
                   placeholder: (_, __) => const Center(
-                    child: !kIsWeb
-                        ? AdaptiveSpinner()
-                        : CircularProgressIndicator(),
+                    child: !kIsWeb ? AdaptiveSpinner() : CircularProgressIndicator(),
                   ),
-                  errorWidget: placeholder != null
-                      ? (_, __, ___) => Image.asset(placeholder!)
-                      : null,
+                  errorWidget:
+                      placeholder != null ? (_, __, ___) => Image.asset(placeholder!) : null,
                   fit: fit,
                 ),
     );

@@ -1,3 +1,10 @@
+## 0.1.8
+* Added documentation for the `setStorageKeys` method
+* Bump SDK and libraries to latest versions
+
+## 0.1.7
+* Switch to enhanced_avatar_view
+
 ## 0.1.6
 * Updated dependencies
 

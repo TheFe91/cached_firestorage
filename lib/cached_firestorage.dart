@@ -27,16 +27,19 @@ class CachedFirestorage {
   Future<String> _getDownloadURL(
     String filePath, {
     String? fallbackFilePath,
+    String? bucket,
   }) async {
     try {
-      return await FirebaseStorage.instance.ref(filePath).getDownloadURL();
+      return await FirebaseStorage.instanceFor(bucket: bucket)
+          .ref(filePath)
+          .getDownloadURL();
     } catch (_) {
       if (fallbackFilePath == null) {
         return '';
       }
 
       try {
-        return await FirebaseStorage.instance
+        return await FirebaseStorage.instanceFor(bucket: bucket)
             .ref(fallbackFilePath)
             .getDownloadURL();
       } catch (__) {

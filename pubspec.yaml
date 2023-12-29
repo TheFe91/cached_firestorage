@@ -1,6 +1,6 @@
 name: cached_firestorage
 description: A Flutter utility that manages Firebase Storage download URLs and caches the results
-version: 0.1.8
+version: 0.1.9
 homepage: https://github.com/TheFe91/cached_firestorage.git
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   adaptive_spinner: ^3.0.0
   cached_network_image: ^3.3.0
   enhanced_avatar_view: ^1.0.1
-  firebase_storage: ^11.5.1
+  firebase_storage: ^11.5.6
   flutter:
     sdk: flutter
   get_storage: ^2.1.1

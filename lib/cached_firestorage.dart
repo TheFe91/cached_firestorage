@@ -54,6 +54,7 @@ class CachedFirestorage {
     required String filePath,
     String? storageKey,
     String? fallbackFilePath,
+    String? bucket,
   }) async {
     assert(storageKey == null || _storageKeys.containsKey(storageKey));
 
@@ -73,6 +74,7 @@ class CachedFirestorage {
     final String downloadURL = await _getDownloadURL(
       filePath,
       fallbackFilePath: fallbackFilePath,
+      bucket: bucket,
     );
 
     mapDownloadURLs[mapKey] = {

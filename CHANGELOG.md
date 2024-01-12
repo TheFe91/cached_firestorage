@@ -1,3 +1,6 @@
+## 0.2.0
+* Added support for multiple buckets (Credit to [Alexandre Maillot](https://github.com/AlexandreMaillot))
+
 ## 0.1.8
 * Added documentation for the `setStorageKeys` method
 * Bump SDK and libraries to latest versions

@@ -13,13 +13,13 @@ dependencies:
     sdk: flutter
   cached_firestorage:
     path: ../
-  cupertino_icons: ^1.0.5
-  firebase_core: ^2.1.0
+  cupertino_icons: ^1.0.8
+  firebase_core: ^3.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true

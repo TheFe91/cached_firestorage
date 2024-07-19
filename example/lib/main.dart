@@ -11,6 +11,7 @@ void main() async {
   );
 
   CachedFirestorage.instance.cacheTimeout = 30;
+  CachedFirestorage.instance.setStorageKeys({'pp': 'pp'});
 
   runApp(const Demo());
 }
@@ -47,119 +48,127 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Cached Firestorage DEMO'),
       ),
-      body: Center(
-        child: ListView(
-          children: [
-            const Text(
-              'The standard way is using a FutureBuilder:\n'
-              'All you have to do is providing the Firebase Storage path and a key of your choice.'
-              'CachedFirestorage will fetch the download url the first time,\n'
-              'and keep that in cache until the timer expires',
-              textAlign: TextAlign.center,
-            ),
-            FutureBuilder<String>(
-              future: CachedFirestorage.instance.getDownloadURL(
-                mapKey: '1',
-                filePath: '1.jpeg',
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Center(
+          child: ListView(
+            children: [
+              const Text(
+                'The standard way is using a FutureBuilder.\n'
+                'All you have to do is providing the Firebase Storage path and a key of your choice.\n'
+                'CachedFirestorage will fetch the download url the first time, '
+                'and keep that in cache until the timer expires',
+                textAlign: TextAlign.center,
               ),
-              builder: (_, snapshot) => snapshot.connectionState == ConnectionState.waiting
-                  ? const CircularProgressIndicator.adaptive()
-                  : snapshot.hasError
-                      ? const Text('An error occurred')
-                      : Image.network(
-                          snapshot.data!,
-                          height: 100,
-                        ),
-            ),
-            const Divider(height: 50),
-            const Text(
-              'You can invalidate the cache for a specific key every time you want\n'
-              'This could be useful if you need to update the url associated a specific key.',
-              textAlign: TextAlign.center,
-            ),
-            FutureBuilder<String>(
-              future: CachedFirestorage.instance.getDownloadURL(
-                mapKey: '2',
-                filePath: currentPic,
+              const SizedBox(height: 8),
+              FutureBuilder<String>(
+                future: CachedFirestorage.instance.getDownloadURL(
+                  mapKey: '1',
+                  filePath: '1.jpeg',
+                ),
+                builder: (_, snapshot) => snapshot.connectionState == ConnectionState.waiting
+                    ? const CircularProgressIndicator.adaptive()
+                    : snapshot.hasError
+                        ? const Text('An error occurred')
+                        : Image.network(
+                            snapshot.data!,
+                            height: 100,
+                          ),
               ),
-              builder: (_, snapshot) => snapshot.connectionState == ConnectionState.waiting
-                  ? const CircularProgressIndicator.adaptive()
-                  : snapshot.hasError
-                      ? const Text('An error occurred')
-                      : Image.network(
-                          snapshot.data!,
-                          height: 100,
-                        ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  child: const Text(
-                    'Change URL',
-                    style: TextStyle(fontSize: 12),
-                    textAlign: TextAlign.center,
+              const Divider(height: 50),
+              const Text(
+                'You can invalidate the cache for a specific key every time you want\n'
+                'This could be useful if you need to update the url associated a specific key.',
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              FutureBuilder<String>(
+                future: CachedFirestorage.instance.getDownloadURL(
+                  mapKey: '2',
+                  filePath: currentPic,
+                ),
+                builder: (_, snapshot) => snapshot.connectionState == ConnectionState.waiting
+                    ? const CircularProgressIndicator.adaptive()
+                    : snapshot.hasError
+                        ? const Text('An error occurred')
+                        : Image.network(
+                            snapshot.data!,
+                            height: 100,
+                          ),
+              ),
+              const SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    child: const Text(
+                      'Change URL',
+                      style: TextStyle(fontSize: 12),
+                      textAlign: TextAlign.center,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        currentPic = currentPic == '2-1.jpeg' ? '2-2.jpeg' : '2-1.jpeg';
+                      });
+                    },
                   ),
-                  onPressed: () {
-                    setState(() {
-                      currentPic = currentPic == '2-1.jpeg' ? '2-2.jpeg' : '2-1.jpeg';
-                    });
-                  },
-                ),
-                const SizedBox(width: 5),
-                ElevatedButton(
-                  child: const Text(
-                    'Remove cache + Change URL',
-                    style: TextStyle(fontSize: 12),
-                    textAlign: TextAlign.center,
+                  const SizedBox(width: 5),
+                  ElevatedButton(
+                    child: const Text(
+                      'Remove cache + Change URL',
+                      style: TextStyle(fontSize: 12),
+                      textAlign: TextAlign.center,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        currentPic = currentPic == '2-1.jpeg' ? '2-2.jpeg' : '2-1.jpeg';
+                        CachedFirestorage.instance.removeCacheEntry(mapKey: '2');
+                      });
+                    },
                   ),
-                  onPressed: () {
-                    setState(() {
-                      currentPic = currentPic == '2-1.jpeg' ? '2-2.jpeg' : '2-1.jpeg';
-                      CachedFirestorage.instance.removeCacheEntry(mapKey: '2');
-                    });
-                  },
-                ),
-              ],
-            ),
-            const Divider(height: 50),
-            const Text(
-              'CachedFirestorage ships with a utility widget named RemotePicture,\n'
-              'which is already optimized for fetching and displaying images stored'
-              'in Firebase Storage',
-              textAlign: TextAlign.center,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 100,
-                  child: RemotePicture(
-                    imagePath: '3.jpeg',
-                    mapKey: '3',
+                ],
+              ),
+              const Divider(height: 50),
+              const Text(
+                'CachedFirestorage ships with a utility widget named RemotePicture,\n'
+                'which is already optimized for fetching and displaying images stored'
+                'in Firebase Storage',
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 100,
+                    child: RemotePicture(
+                      imagePath: '3.jpeg',
+                      mapKey: '3',
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const Divider(height: 50),
-            const Text(
-              'You can also use it for an avatar',
-              textAlign: TextAlign.center,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RemotePicture(
-                  imagePath: 'avatar.jpeg',
-                  mapKey: 'avatar',
-                  useAvatarView: true,
-                  avatarViewRadius: 60,
-                  fit: BoxFit.cover,
-                  storageKey: 'pp',
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+              const Divider(height: 50),
+              const Text(
+                'You can also use it for an avatar',
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RemotePicture(
+                    imagePath: 'avatar.jpeg',
+                    mapKey: 'avatar',
+                    useAvatarView: true,
+                    avatarViewRadius: 60,
+                    fit: BoxFit.cover,
+                    storageKey: 'pp',
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

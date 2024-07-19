@@ -1,3 +1,6 @@
+## 0.2.1
+* Bumped dependencies
+
 ## 0.2.0
 * Added support for multiple buckets (Credit to [Alexandre Maillot](https://github.com/AlexandreMaillot))
 

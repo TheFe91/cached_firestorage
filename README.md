@@ -10,7 +10,7 @@ A Flutter utility that manages Firebase Storage download URLs and caches the res
 ## Usage
 
 Cached Firestorage exposes a `Singleton` which you can access through `CachedFirestorage.instance`<br /><br />
-The default `cache duration` is of `360s` (`6h`): you can customize this by passing the number of seconds to the instance:
+The default `cache duration` is of `360 minutes` (`6h`): you can customize this by passing the number of minutes to the instance:
 ```dart
 CachedFirestorage.instance.cacheTimeout = 30;
 ```

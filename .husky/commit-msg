@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+INPUT_FILE=$1
+START_LINE=$(head -n1 "$INPUT_FILE")
+
+dart run commitlint.dart "$START_LINE"

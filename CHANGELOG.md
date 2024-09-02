@@ -1,3 +1,7 @@
+## 0.3.0
+* `FIX`: README containing errors regard the `cacheTimeout`
+* `FEAT`: Added the `clearExpiredCache` method
+
 ## 0.2.1
 * Bumped dependencies
 

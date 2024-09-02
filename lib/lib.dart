@@ -1,3 +1,4 @@
+/// The Cached Firestorage Library
 library cached_firestorage;
 
 export 'package:cached_firestorage/cached_firestorage.dart';
